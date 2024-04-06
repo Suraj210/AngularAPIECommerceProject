@@ -1,4 +1,5 @@
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\bin\Debug\net6.0\ECommerceAPI.Persistence.deps.json
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\bin\Debug\net6.0\ECommerceAPI.Persistence.runtimeconfig.json
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\bin\Debug\net6.0\ECommerceAPI.Persistence.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\bin\Debug\net6.0\ECommerceAPI.Persistence.pdb
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\bin\Debug\net6.0\ECommerceAPI.Application.dll
@@ -14,4 +15,5 @@ C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerce
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\obj\Debug\net6.0\ECommerceAPI.Persistence.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\obj\Debug\net6.0\refint\ECommerceAPI.Persistence.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\obj\Debug\net6.0\ECommerceAPI.Persistence.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\obj\Debug\net6.0\ECommerceAPI.Persistence.genruntimeconfig.cache
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\ECommerceAPI.Persistence\obj\Debug\net6.0\ref\ECommerceAPI.Persistence.dll
