@@ -12,7 +12,7 @@ namespace ECommerceAPI.Persistence
                     ConfigurationManager configurationManager = new();
                     configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/ECommerceAPI.API"));
                     configurationManager.AddJsonFile("appsettings.json");
-                    return configurationManager.GetConnectionString("PostggreSQL");
+                    return configurationManager.GetConnectionString("PostgreSQL");
 
             }
         }
