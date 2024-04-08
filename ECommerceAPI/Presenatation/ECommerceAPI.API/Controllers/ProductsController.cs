@@ -11,31 +11,29 @@ namespace ECommerceAPI.API.Controllers
     {
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IProductReadRepository _productReadRepository;
-        public ProductsController(IProductWriteRepository productWriteRepository
-                                 , IProductReadRepository productReadRepository)
+        private readonly IOrderWriteRepository _orderWriteRepository;
+        private readonly IOrderReadRepository _orderReadRepository;
+        private readonly ICustomerWriteRepository _customerWriteRepository;
+        public ProductsController(IProductWriteRepository productWriteRepository,
+                                  IProductReadRepository productReadRepository,
+                                  IOrderWriteRepository orderWriteRepository,
+                                  ICustomerWriteRepository customerWriteRepository,
+                                  IOrderReadRepository orderReadRepository)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
+            _orderWriteRepository = orderWriteRepository;
+            _customerWriteRepository = customerWriteRepository;
+            _orderReadRepository = orderReadRepository;
         }
 
         [HttpGet]
         public async Task Get()
         {
-            await _productWriteRepository.AddRangeAsync(new()
-            {
-                new(){Id=Guid.NewGuid(), Name = "Pro1", Price=100, CreatedDate=DateTime.UtcNow, Stock=10},
-                new(){Id=Guid.NewGuid(), Name = "Pro2", Price=200, CreatedDate=DateTime.UtcNow, Stock=100},
-                new(){Id=Guid.NewGuid(), Name = "Pro3", Price=1200, CreatedDate=DateTime.UtcNow, Stock=200},
-                new(){Id=Guid.NewGuid(), Name = "Pro4", Price=500, CreatedDate=DateTime.UtcNow, Stock=30},
-            });
-            var count = await _productWriteRepository.SaveChanges();
+            Order order = await _orderReadRepository.GetByIdAsync("af480993-30ed-4d6c-8668-51639e73bfdc");
+            order.Address = "Istanbul";
+            await _orderWriteRepository.SaveAsync();
         }
 
-        [HttpGet ("{id}")]
-        public async Task<IActionResult> Get(string id)
-        {
-            Product product = await _productReadRepository.GetByIdAsync(id);
-            return Ok(product);
-        }
     }
 }
