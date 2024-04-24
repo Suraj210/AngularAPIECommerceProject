@@ -31,7 +31,7 @@ namespace ECommerceAPI.API.Controllers
         public async Task Get()
         {
             Order order = await _orderReadRepository.GetByIdAsync("af480993-30ed-4d6c-8668-51639e73bfdc");
-            order.Address = "Istanbul";
+            order.Address = "Istanbulll";
             await _orderWriteRepository.SaveAsync();
         }
 
