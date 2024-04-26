@@ -14,11 +14,12 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'ECommerceClient';
-  // ngOnInit(): void {
-  //   $(document).ready(() => {
-  //     alert('Ready');
-  //   });
-  // }
+
+  ngOnInit(): void {
+    $.get('https://localhost:7188/api/products', (data) => {
+      console.log(data);
+    });
+  }
 
   // constructor(private toastrService: CustomToastrService) {
   //   toastrService.message('Hello', 'Suraj', {
