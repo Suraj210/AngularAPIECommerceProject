@@ -16,9 +16,9 @@ export class AppComponent {
   title = 'ECommerceClient';
 
   ngOnInit(): void {
-    $.get('https://localhost:7188/api/products', (data) => {
-      console.log(data);
-    });
+    // $.get('https://localhost:7188/api/products', (data) => {
+    //   console.log(data);
+    // });
   }
 
   // constructor(private toastrService: CustomToastrService) {
