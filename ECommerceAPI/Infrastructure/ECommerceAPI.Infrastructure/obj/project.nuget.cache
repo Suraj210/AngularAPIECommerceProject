@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "tg7bsLUkr0395Beqba4f9s/mE5PpvAjibI8+nWegSapkVmknwGlZf62kNyMTrJHuxZ3TAGvVxp5GYmW1wvwC4A==",
+  "dgSpecHash": "qn7mvGjSsGZbpiQRAe3TEOkEWZGBPldOqRJr36/abi5u77Z4PGXxm7fLhwQI6AZ1XxZ4RGdLb66sF2Gi/+BqcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Infrastructure\\ECommerceAPI.Infrastructure\\ECommerceAPI.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\acer\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.28\\microsoft.entityframeworkcore.6.0.28.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.28\\microsoft.entityframeworkcore.abstractions.6.0.28.nupkg.sha512",
     "C:\\Users\\acer\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.28\\microsoft.entityframeworkcore.analyzers.6.0.28.nupkg.sha512",

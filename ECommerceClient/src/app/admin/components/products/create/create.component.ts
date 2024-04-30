@@ -8,6 +8,7 @@ import {
   MessageType,
   Position,
 } from '../../../../services/admin/alertify.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-create',
@@ -36,14 +37,41 @@ export class CreateComponent extends BaseComponent {
     product_create.stock = parseInt(stock.value);
     product_create.price = parseFloat(price.value);
 
-    this.productService.create(product_create, () => {
-      
-      this.hideSpinner(SpinnerType.BallAtom);
-      this.alertify.message('Product has been added successfully', {
+    if (!name.value) {
+      this.alertify.message('Please write product name', {
         dismissOthers: true,
-        messageType: MessageType.Success,
+        messageType: MessageType.Error,
         position: Position.TopRight,
       });
-    });
+      return;
+    }
+
+    if (parseInt(stock.value) < 0) {
+      this.alertify.message('Please write stock information correctly', {
+        dismissOthers: true,
+        messageType: MessageType.Error,
+        position: Position.TopRight,
+      });
+      return;
+    }
+
+    this.productService.create(
+      product_create,
+      () => {
+        this.hideSpinner(SpinnerType.BallAtom);
+        this.alertify.message('Product has been added successfully', {
+          dismissOthers: true,
+          messageType: MessageType.Success,
+          position: Position.TopRight,
+        });
+      },
+      (errorMessage) => {
+        this.alertify.message(errorMessage, {
+          dismissOthers: true,
+          messageType: MessageType.Error,
+          position: Position.TopRight,
+        });
+      }
+    );
   }
 }
