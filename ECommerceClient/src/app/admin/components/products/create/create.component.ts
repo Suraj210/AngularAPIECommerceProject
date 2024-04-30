@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ProductService } from '../../../../services/common/models/product.service';
 import { Create_Product } from '../../../../contracts/create_product';
 import { BaseComponent, SpinnerType } from '../../../../base/base.component';
@@ -26,6 +26,8 @@ export class CreateComponent extends BaseComponent {
 
   ngOnInit(): void {}
 
+  @Output() creaatedProduct :  EventEmitter<Create_Product>= new EventEmitter();
+
   create(
     name: HTMLInputElement,
     stock: HTMLInputElement,
@@ -37,24 +39,6 @@ export class CreateComponent extends BaseComponent {
     product_create.stock = parseInt(stock.value);
     product_create.price = parseFloat(price.value);
 
-    if (!name.value) {
-      this.alertify.message('Please write product name', {
-        dismissOthers: true,
-        messageType: MessageType.Error,
-        position: Position.TopRight,
-      });
-      return;
-    }
-
-    if (parseInt(stock.value) < 0) {
-      this.alertify.message('Please write stock information correctly', {
-        dismissOthers: true,
-        messageType: MessageType.Error,
-        position: Position.TopRight,
-      });
-      return;
-    }
-
     this.productService.create(
       product_create,
       () => {
@@ -64,6 +48,8 @@ export class CreateComponent extends BaseComponent {
           messageType: MessageType.Success,
           position: Position.TopRight,
         });
+
+        this.creaatedProduct.emit(product_create)
       },
       (errorMessage) => {
         this.alertify.message(errorMessage, {

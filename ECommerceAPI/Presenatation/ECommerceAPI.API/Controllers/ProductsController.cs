@@ -1,4 +1,5 @@
 ﻿using ECommerceAPI.Application.Repositories;
+using ECommerceAPI.Application.RequestParameters;
 using ECommerceAPI.Application.ViewModels.Products;
 using ECommerceAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -22,31 +23,47 @@ namespace ECommerceAPI.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
         {
 
-            return Ok(_productReadRepository.GetAll(false));
-            
+            var totalCount = _productReadRepository.GetAll(false).Count();
+            var products = _productReadRepository.GetAll(false).Skip(pagination.Size * pagination.Page)
+                                                               .Take(pagination.Size)
+                                                               .Select(p => new
+                                                               {
+                                                                   p.Id,
+                                                                   p.Name,
+                                                                   p.Stock,
+                                                                   p.Price,
+                                                                   p.CreatedDate,
+                                                                   p.UpdatedDate
+                                                               });
+
+            return Ok(new
+            {
+
+                totalCount,
+                products
+
+            });
+
+
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok( await _productReadRepository.GetByIdAsync(id,false));
+            return Ok(await _productReadRepository.GetByIdAsync(id, false));
         }
 
         [HttpPost]
 
         public async Task<IActionResult> Post(VM_CreateProduct model)
         {
-            if (ModelState.IsValid)
-            {
-
-            }
-           await _productWriteRepository.AddAsync(new()
+            await _productWriteRepository.AddAsync(new()
             {
                 Name = model.Name,
-                Stock=model.Stock,
-                Price=model.Price
+                Stock = model.Stock,
+                Price = model.Price
             });
 
             await _productWriteRepository.SaveAsync();
