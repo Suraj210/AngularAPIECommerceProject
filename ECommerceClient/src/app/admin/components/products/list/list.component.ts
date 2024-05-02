@@ -11,6 +11,8 @@ import {
 } from '../../../../services/admin/alertify.service';
 import { MatPaginator } from '@angular/material/paginator';
 
+declare var $: any;
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -31,6 +33,8 @@ export class ListComponent extends BaseComponent {
     'price',
     'createdDate',
     'updatedDate',
+    'update',
+    'delete',
   ];
 
   dataSource: MatTableDataSource<List_Product> = null;
@@ -60,6 +64,12 @@ export class ListComponent extends BaseComponent {
   async pageChanged() {
     await this.getProducts();
   }
+
+  // delete(id: string, event) {
+  //   alert(id);
+  //   const img: HTMLImageElement = event.srcElement;
+  //   $(img.parentElement.parentElement).fadeOut(2000);
+  // }
 
   async ngOnInit() {
     await this.getProducts();
