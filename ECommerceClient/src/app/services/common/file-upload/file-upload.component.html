@@ -1,13 +1,14 @@
 <div class="center">
   <ngx-file-drop
     dropZoneLabel="Drop files here"
+    [accept]="options.accept"
     (onFileDrop)="selectedFiles($event)"
   >
     <ng-template
       ngx-file-drop-content-tmp
       let-openFileSelector="openFileSelector"
     >
-      Select the files....
+      {{ options.explanation }}
       <button type="button" (click)="openFileSelector()">Select</button>
     </ng-template>
   </ngx-file-drop>
@@ -15,7 +16,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Selected</th>
+          <th>Selected:</th>
         </tr>
       </thead>
       <tbody class="upload-name-style">

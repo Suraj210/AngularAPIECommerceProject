@@ -52,3 +52,4 @@ C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceA
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Infrastructure.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Infrastructure.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.staticwebassets.runtime.json

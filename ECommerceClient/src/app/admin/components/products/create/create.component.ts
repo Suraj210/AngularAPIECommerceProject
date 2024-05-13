@@ -9,6 +9,7 @@ import {
   Position,
 } from '../../../../services/admin/alertify.service';
 import { error } from 'console';
+import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 
 @Component({
   selector: 'app-create',
@@ -26,7 +27,14 @@ export class CreateComponent extends BaseComponent {
 
   ngOnInit(): void {}
 
-  @Output() creaatedProduct :  EventEmitter<Create_Product>= new EventEmitter();
+  @Output() creaatedProduct: EventEmitter<Create_Product> = new EventEmitter();
+  @Output() fileUploadOptions: Partial<FileUploadOptions> = {
+    action: 'upload',
+    controller: 'products',
+    explanation: 'Drag or select images ...',
+    isAdminPage: true,
+    accept: '.png, .jpg, .jpeg',
+  };
 
   create(
     name: HTMLInputElement,
@@ -49,7 +57,7 @@ export class CreateComponent extends BaseComponent {
           position: Position.TopRight,
         });
 
-        this.creaatedProduct.emit(product_create)
+        this.creaatedProduct.emit(product_create);
       },
       (errorMessage) => {
         this.alertify.message(errorMessage, {
