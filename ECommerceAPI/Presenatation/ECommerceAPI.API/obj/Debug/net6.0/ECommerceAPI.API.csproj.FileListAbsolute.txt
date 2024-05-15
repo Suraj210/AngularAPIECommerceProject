@@ -1,10 +1,14 @@
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\appsettings.json
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.staticwebassets.runtime.json
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.exe
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.deps.json
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.runtimeconfig.json
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Humanizer.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -22,8 +26,10 @@ C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceA
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Application.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Domain.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Infrastructure.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Persistence.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Application.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Infrastructure.pdb
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Persistence.pdb
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Domain.pdb
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ECommerceAPI.API.csproj.AssemblyReference.cache
@@ -47,9 +53,3 @@ C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceA
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ECommerceAPI.API.pdb
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ECommerceAPI.API.genruntimeconfig.cache
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ref\ECommerceAPI.API.dll
-C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.dll
-C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
-C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
-C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Infrastructure.dll
-C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.Infrastructure.pdb
-C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\ECommerceAPI.API.staticwebassets.runtime.json

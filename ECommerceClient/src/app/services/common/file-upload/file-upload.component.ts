@@ -12,6 +12,12 @@ import {
   ToastrMessageType,
   ToastrPosition,
 } from '../../ui/custom-toastr.service';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  FileUpdateDialogState,
+  FileUploadDialogComponent,
+} from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -22,7 +28,9 @@ export class FileUploadComponent {
   constructor(
     private httpClientService: HttpClientService,
     private alertifyService: AlertifyService,
-    private customToastrService: CustomToastrService
+    private customToastrService: CustomToastrService,
+    private dialog: MatDialog,
+    private dialogService: DialogService
   ) {}
   public files: NgxFileDropEntry[];
 
@@ -39,50 +47,57 @@ export class FileUploadComponent {
       });
     }
 
-    this.httpClientService
-      .post(
-        {
-          controller: this.options.controller,
-          action: this.options.action,
-          queryString: this.options.queryString,
-          headers: new HttpHeaders({ responseType: 'blob' }),
-        },
-        fileData
-      )
-      .subscribe(
-        (data) => {
-          const message: string = 'Files have been successfully uploaded.';
-
-          if (this.options.isAdminPage) {
-            this.alertifyService.message(message, {
-              dismissOthers: true,
-              messageType: MessageType.Success,
-              position: Position.TopRight,
-            });
-          } else {
-            this.customToastrService.message(message, 'Successful', {
-              messageType: ToastrMessageType.Success,
-              position: ToastrPosition.TopRight,
-            });
-          }
-        },
-        (errorResponse: HttpErrorResponse) => {
-          const message: string = 'Something went wrong while files uploaded!';
-
-          if (this.options.isAdminPage) {
-            this.alertifyService.message(message, {
-              dismissOthers: true,
-              messageType: MessageType.Error,
-              position: Position.TopRight,
-            });
-          } else {
-            this.customToastrService.message(message, 'Error', {
-              messageType: ToastrMessageType.Error,
-              position: ToastrPosition.TopRight,
-            });
-          }
-        }
-      );
+    this.dialogService.openDialog({
+      componentType:FileUploadDialogComponent,
+      data:FileUpdateDialogState.Yes,
+      afterClosed: () => {
+        this.httpClientService
+          .post(
+            {
+              controller: this.options.controller,
+              action: this.options.action,
+              queryString: this.options.queryString,
+              headers: new HttpHeaders({ responseType: 'blob' }),
+            },
+            fileData
+          )
+          .subscribe(
+            (data) => {
+              const message: string = 'Files have been successfully uploaded.';
+  
+              if (this.options.isAdminPage) {
+                this.alertifyService.message(message, {
+                  dismissOthers: true,
+                  messageType: MessageType.Success,
+                  position: Position.TopRight,
+                });
+              } else {
+                this.customToastrService.message(message, 'Successful', {
+                  messageType: ToastrMessageType.Success,
+                  position: ToastrPosition.TopRight,
+                });
+              }
+            },
+            (errorResponse: HttpErrorResponse) => {
+              const message: string =
+                'Something went wrong while files uploaded!';
+  
+              if (this.options.isAdminPage) {
+                this.alertifyService.message(message, {
+                  dismissOthers: true,
+                  messageType: MessageType.Error,
+                  position: Position.TopRight,
+                });
+              } else {
+                this.customToastrService.message(message, 'Error', {
+                  messageType: ToastrMessageType.Error,
+                  position: ToastrPosition.TopRight,
+                });
+              }
+            }
+          );
+      }
+    });
   }
 }
 
