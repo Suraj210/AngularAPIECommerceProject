@@ -17,7 +17,7 @@ namespace ECommerceAPI.Infrastructure.Services
         {
             try
             {
-                using FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Write, 1024 * 1024, useAsync: false);
+                await using FileStream fileStream = new(path, FileMode.Create, FileAccess.Write, FileShare.None, 1024 * 1024, useAsync: false);
 
                 await file.CopyToAsync(fileStream);
                 await fileStream.FlushAsync();
@@ -58,13 +58,34 @@ namespace ECommerceAPI.Infrastructure.Services
                       }
                       else
                       {
-                          int indexNo2 = newFileName.IndexOf(".");
-                          string fileNo = newFileName.Substring(indexNo1, indexNo2 - indexNo1 - 1);
-                          int _fileNo = int.Parse(fileNo);
-                          _fileNo++;
+                          int lastIndex = 0;
 
-                          newFileName = newFileName.Remove(indexNo1, indexNo2 - indexNo1 - 1)
-                                                   .Insert(indexNo1, _fileNo.ToString());
+                          while (true)
+                          {
+
+                              lastIndex = indexNo1;
+                              indexNo1 = newFileName.IndexOf("-", indexNo1 + 1);
+                              if (indexNo1 == -1)
+                              {
+                                  indexNo1 = lastIndex;
+                                  break;
+                              }
+                          }
+
+                          int indexNo2 = newFileName.IndexOf(".");
+                          string fileNo = newFileName.Substring(indexNo1 + 1, indexNo2 - indexNo1 - 1);
+
+                          if (int.TryParse(fileNo, out int _fileNo))
+                          {
+                              _fileNo++;
+                              newFileName = newFileName.Remove(indexNo1 + 1, indexNo2 - indexNo1 - 1)
+                                                       .Insert(indexNo1+1, _fileNo.ToString());
+                          }
+                          else
+                          {
+                              newFileName = $"{Path.GetFileNameWithoutExtension(newFileName)}-2{extension}";
+                          }
+
 
                       }
 
@@ -77,7 +98,7 @@ namespace ECommerceAPI.Infrastructure.Services
                       return newFileName;
               });
 
-            return "";
+            return newFileName;
 
         }
 
@@ -95,7 +116,7 @@ namespace ECommerceAPI.Infrastructure.Services
                 string fileNewName = await FileRenameAsync(uploadPath, file.FileName);
 
                 bool result = await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
-                datas.Add((fileNewName, $"{uploadPath}\\{fileNewName}"));
+                datas.Add((fileNewName, $"{path}\\{fileNewName}"));
                 results.Add(result);
             }
 

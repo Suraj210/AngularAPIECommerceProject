@@ -18,6 +18,8 @@ import {
   FileUploadDialogComponent,
 } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogService } from '../dialog.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from '../../../base/base.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -30,7 +32,8 @@ export class FileUploadComponent {
     private alertifyService: AlertifyService,
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private spinner: NgxSpinnerService
   ) {}
   public files: NgxFileDropEntry[];
 
@@ -48,9 +51,10 @@ export class FileUploadComponent {
     }
 
     this.dialogService.openDialog({
-      componentType:FileUploadDialogComponent,
-      data:FileUpdateDialogState.Yes,
+      componentType: FileUploadDialogComponent,
+      data: FileUpdateDialogState.Yes,
       afterClosed: () => {
+        this.spinner.show(SpinnerType.BallAtom);
         this.httpClientService
           .post(
             {
@@ -64,7 +68,8 @@ export class FileUploadComponent {
           .subscribe(
             (data) => {
               const message: string = 'Files have been successfully uploaded.';
-  
+              this.spinner.hide(SpinnerType.BallAtom);
+
               if (this.options.isAdminPage) {
                 this.alertifyService.message(message, {
                   dismissOthers: true,
@@ -81,7 +86,9 @@ export class FileUploadComponent {
             (errorResponse: HttpErrorResponse) => {
               const message: string =
                 'Something went wrong while files uploaded!';
-  
+
+              this.spinner.hide(SpinnerType.BallAtom);
+
               if (this.options.isAdminPage) {
                 this.alertifyService.message(message, {
                   dismissOthers: true,
@@ -96,7 +103,7 @@ export class FileUploadComponent {
               }
             }
           );
-      }
+      },
     });
   }
 }
