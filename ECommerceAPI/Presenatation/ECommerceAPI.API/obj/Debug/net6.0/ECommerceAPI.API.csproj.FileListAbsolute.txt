@@ -53,3 +53,10 @@ C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceA
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ECommerceAPI.API.pdb
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ECommerceAPI.API.genruntimeconfig.cache
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\obj\Debug\net6.0\ref\ECommerceAPI.API.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\System.ClientModel.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\System.IO.Hashing.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\System.Memory.Data.dll
