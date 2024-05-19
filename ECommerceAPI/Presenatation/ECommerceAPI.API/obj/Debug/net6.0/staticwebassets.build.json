@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Pre0GfBHGxP7udFepRe8r7ah99KImzcU7OGccMYnhkY=",
+  "Hash": "mQ9mamYML0ZuKBr0KpdnvFoIa+w3swNt0pJqQ8dC31Q=",
   "Source": "ECommerceAPI.API",
   "BasePath": "_content/ECommerceAPI.API",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\resource\\files\\idea - Copy.jpeg",
+      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\files\\idea---Copy.jpeg",
       "SourceId": "ECommerceAPI.API",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\",
       "BasePath": "_content/ECommerceAPI.API",
-      "RelativePath": "resource/files/idea - Copy.jpeg",
+      "RelativePath": "files/idea---Copy.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,7 +31,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\resource\\files\\idea - Copy.jpeg"
+      "OriginalItemSpec": "wwwroot\\files\\idea---Copy.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\files\\product-1.jpeg",
+      "SourceId": "ECommerceAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\",
+      "BasePath": "_content/ECommerceAPI.API",
+      "RelativePath": "files/product-1.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\product-1.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\files\\Purchase.png",
+      "SourceId": "ECommerceAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\",
+      "BasePath": "_content/ECommerceAPI.API",
+      "RelativePath": "files/Purchase.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\Purchase.png"
     }
   ]
 }

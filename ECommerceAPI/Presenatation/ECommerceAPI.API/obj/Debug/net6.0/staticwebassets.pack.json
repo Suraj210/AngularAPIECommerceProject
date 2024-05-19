@@ -1,8 +1,16 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\resource\\files\\idea - Copy.jpeg",
-      "PackagePath": "staticwebassets\\resource\\files\\idea - Copy.jpeg"
+      "Id": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\files\\Purchase.png",
+      "PackagePath": "staticwebassets\\files\\Purchase.png"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\files\\idea---Copy.jpeg",
+      "PackagePath": "staticwebassets\\files\\idea---Copy.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\files\\product-1.jpeg",
+      "PackagePath": "staticwebassets\\files\\product-1.jpeg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ECommerceAPI.API.Microsoft.AspNetCore.StaticWebAssets.props",
