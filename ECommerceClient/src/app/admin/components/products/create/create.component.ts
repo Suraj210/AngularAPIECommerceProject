@@ -28,13 +28,6 @@ export class CreateComponent extends BaseComponent {
   ngOnInit(): void {}
 
   @Output() creaatedProduct: EventEmitter<Create_Product> = new EventEmitter();
-  @Output() fileUploadOptions: Partial<FileUploadOptions> = {
-    action: 'upload',
-    controller: 'products',
-    explanation: 'Drag or select images ...',
-    isAdminPage: true,
-    accept: '.png, .jpg, .jpeg',
-  };
 
   create(
     name: HTMLInputElement,

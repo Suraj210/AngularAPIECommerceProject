@@ -114,40 +114,36 @@ namespace ECommerceAPI.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload()
+        public async Task<IActionResult> Upload(string id)
         {
+            List<(string fileName, string pathOrContainerName)> result = await _storageService.UploadAsync("photo-images", Request.Form.Files);
 
-           var datas=  await _storageService.UploadAsync("files", Request.Form.Files);
 
-          //  var datas = await _fileService.UploadAsync("resource/otherFiles", Request.Form.Files);
 
-            await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile()
+            Product product = await _productReadRepository.GetByIdAsync(id);
+
+
+            //foreach (var file in result)
+            //{
+            //    product.ProductImageFiles.Add(new()
+            //    {
+            //        FileName = file.fileName,
+            //        Path = file.pathOrContainerName,
+            //        Storage = _storageService.StorageName,
+            //    });
+            //}
+
+            await _productImageFileWriteRepository.AddRangeAsync(result.Select(r => new ProductImageFile
             {
-                FileName = d.fileName,
-                Path = d.pathOrContainerName,
-                Storage = _storageService.StorageName
+
+                FileName = r.fileName,
+                Path = r.pathOrContainerName,
+                Storage = _storageService.StorageName,
+                Products = new List<Product>() { product}
+
             }).ToList());
 
             await _productImageFileWriteRepository.SaveAsync();
-
-
-            //await _invoiveFileWriteRepository.AddRangeAsync(datas.Select(d => new InvoiceFile()
-            //{
-            //    FileName = d.fileName,
-            //    Path = d.path,
-            //    Price = new Random ().Next()
-            //}).ToList());
-            //await _invoiveFileWriteRepository.SaveAsync();
-
-            //await _fileWriteRepository.AddRangeAsync(datas.Select(d => new F::File()
-            //{
-            //    FileName = d.fileName,
-            //    Path = d.path,
-            //}).ToList());
-
-            //await _fileWriteRepository.SaveAsync();
-
-
 
             return Ok();
         }

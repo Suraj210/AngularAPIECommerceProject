@@ -10,6 +10,8 @@ import {
   Position,
 } from '../../../../services/admin/alertify.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { DialogService } from '../../../../services/common/dialog.service';
+import { SelectProductImageDialogComponent } from '../../../../dialogs/select-product-image-dialog/select-product-image-dialog.component';
 
 declare var $: any;
 
@@ -22,7 +24,8 @@ export class ListComponent extends BaseComponent {
   constructor(
     spinner: NgxSpinnerService,
     private productService: ProductService,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
+    private dialogService: DialogService
   ) {
     super(spinner);
   }
@@ -33,6 +36,7 @@ export class ListComponent extends BaseComponent {
     'price',
     'createdDate',
     'updatedDate',
+    'photos',
     'update',
     'delete',
   ];
@@ -65,11 +69,15 @@ export class ListComponent extends BaseComponent {
     await this.getProducts();
   }
 
-  // delete(id: string, event) {
-  //   alert(id);
-  //   const img: HTMLImageElement = event.srcElement;
-  //   $(img.parentElement.parentElement).fadeOut(2000);
-  // }
+  addProductImages(id: string) {
+    this.dialogService.openDialog({
+      componentType: SelectProductImageDialogComponent,
+      data: id,
+      options: {
+        width: '1400px',
+      },
+    });
+  }
 
   async ngOnInit() {
     await this.getProducts();
