@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wJx+pATj/4CBXvlrKjmahimfL+TkI9zDp06lNekwiIM=",
+  "Hash": "km4eFHP5l1emLji8zsMAqQ1Wf4RRr/lmZu8Lqx/4158=",
   "Source": "ECommerceAPI.API",
   "BasePath": "_content/ECommerceAPI.API",
   "Mode": "Default",
@@ -15,5 +15,57 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\photo-images\\product-2.jpeg",
+      "SourceId": "ECommerceAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\",
+      "BasePath": "_content/ECommerceAPI.API",
+      "RelativePath": "photo-images/product-2.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\photo-images\\product-2.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\photo-images\\subscribe-bg.jpeg",
+      "SourceId": "ECommerceAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\",
+      "BasePath": "_content/ECommerceAPI.API",
+      "RelativePath": "photo-images/subscribe-bg.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\photo-images\\subscribe-bg.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\photo-images\\title-logo.png",
+      "SourceId": "ECommerceAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Presenatation\\ECommerceAPI.API\\wwwroot\\",
+      "BasePath": "_content/ECommerceAPI.API",
+      "RelativePath": "photo-images/title-logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\photo-images\\title-logo.png"
+    }
+  ]
 }

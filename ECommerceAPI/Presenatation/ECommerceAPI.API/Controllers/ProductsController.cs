@@ -4,6 +4,7 @@ using ECommerceAPI.Application.RequestParameters;
 using ECommerceAPI.Application.ViewModels.Products;
 using ECommerceAPI.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using F = ECommerceAPI.Domain.Entities;
 namespace ECommerceAPI.API.Controllers
@@ -22,6 +23,7 @@ namespace ECommerceAPI.API.Controllers
         readonly IInvoiveFileReadRepository _invoiveFileReadRepository;
         readonly IInvoiveFileWriteRepository _invoiveFileWriteRepository;
         readonly IStorageService _storageService;
+        readonly IConfiguration _configuration;
 
         public ProductsController(IProductWriteRepository productWriteRepository,
                                   IProductReadRepository productReadRepository,
@@ -32,7 +34,8 @@ namespace ECommerceAPI.API.Controllers
                                   IProductImageFileReadRepository productImageFileReadRepository,
                                   IInvoiveFileReadRepository invoiveFileReadRepository,
                                   IInvoiveFileWriteRepository invoiveFileWriteRepository,
-                                  IStorageService storageService)
+                                  IStorageService storageService,
+                                  IConfiguration configuration)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
@@ -44,6 +47,7 @@ namespace ECommerceAPI.API.Controllers
             _invoiveFileReadRepository = invoiveFileReadRepository;
             _invoiveFileWriteRepository = invoiveFileWriteRepository;
             _storageService = storageService;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -139,11 +143,45 @@ namespace ECommerceAPI.API.Controllers
                 FileName = r.fileName,
                 Path = r.pathOrContainerName,
                 Storage = _storageService.StorageName,
-                Products = new List<Product>() { product}
+                Products = new List<Product>() { product }
 
             }).ToList());
 
             await _productImageFileWriteRepository.SaveAsync();
+
+            return Ok();
+        }
+
+
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetProductImages(string id)
+        {
+            Product? product = await _productReadRepository.Table.Include(p => p.ProductImageFiles)
+                                           .FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+
+
+            return Ok(product.ProductImageFiles.Select(p => new
+            {
+
+                Path = $"{_configuration["BaseStorageUrl"]}{p.Path}",
+                p.FileName,
+                p.Id
+
+            }));
+        }
+
+
+        [HttpDelete("[action]/{id}")]
+        public async Task<IActionResult> DeleteProductImage(string id, string imageId)
+        {
+            Product? product = await _productReadRepository.Table.Include(p => p.ProductImageFiles)
+                                           .FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+
+            ProductImageFile? productImageFile = product.ProductImageFiles.FirstOrDefault(p => p.Id == Guid.Parse(imageId));
+
+            product.ProductImageFiles.Remove(productImageFile);
+
+            await _productWriteRepository.SaveAsync();
 
             return Ok();
         }
