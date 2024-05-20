@@ -1,8 +1,11 @@
 ﻿using ECommerceAPI.Application.Abstractions.Storage;
+using ECommerceAPI.Application.Features.Commands.CreateProduct;
+using ECommerceAPI.Application.Features.Queries.GetAllProduct;
 using ECommerceAPI.Application.Repositories;
 using ECommerceAPI.Application.RequestParameters;
 using ECommerceAPI.Application.ViewModels.Products;
 using ECommerceAPI.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -25,6 +28,10 @@ namespace ECommerceAPI.API.Controllers
         readonly IStorageService _storageService;
         readonly IConfiguration _configuration;
 
+
+        readonly IMediator _mediator;
+
+
         public ProductsController(IProductWriteRepository productWriteRepository,
                                   IProductReadRepository productReadRepository,
                                   IWebHostEnvironment webHostEnvironment,
@@ -35,7 +42,8 @@ namespace ECommerceAPI.API.Controllers
                                   IInvoiveFileReadRepository invoiveFileReadRepository,
                                   IInvoiveFileWriteRepository invoiveFileWriteRepository,
                                   IStorageService storageService,
-                                  IConfiguration configuration)
+                                  IConfiguration configuration,
+                                  IMediator mediator)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
@@ -48,32 +56,15 @@ namespace ECommerceAPI.API.Controllers
             _invoiveFileWriteRepository = invoiveFileWriteRepository;
             _storageService = storageService;
             _configuration = configuration;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
+        public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
-            var totalCount = _productReadRepository.GetAll(false).Count();
-            var products = _productReadRepository.GetAll(false).Skip(pagination.Size * pagination.Page)
-                                                               .Take(pagination.Size)
-                                                               .Select(p => new
-                                                               {
-                                                                   p.Id,
-                                                                   p.Name,
-                                                                   p.Stock,
-                                                                   p.Price,
-                                                                   p.CreatedDate,
-                                                                   p.UpdatedDate
-                                                               });
 
-            return Ok(new
-            {
-
-                totalCount,
-                products
-
-            });
-
+            GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
+            return Ok(response);
 
         }
 
@@ -84,17 +75,14 @@ namespace ECommerceAPI.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(VM_CreateProduct model)
+        public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
         {
-            await _productWriteRepository.AddAsync(new()
-            {
-                Name = model.Name,
-                Stock = model.Stock,
-                Price = model.Price
-            });
 
-            await _productWriteRepository.SaveAsync();
-            return StatusCode((int)HttpStatusCode.Created);
+            CreateProductCommandResponse response = await _mediator.Send(createProductCommandRequest);
+            if(response != null)
+                return StatusCode((int)HttpStatusCode.Created);
+            else
+                return StatusCode((int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
