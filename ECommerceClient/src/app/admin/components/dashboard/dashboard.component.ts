@@ -13,11 +13,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent extends BaseComponent {
-  constructor(private alertify: AlertifyService, spinner:NgxSpinnerService) {
-    super(spinner)
+  constructor(private alertify: AlertifyService, spinner: NgxSpinnerService) {
+    super(spinner);
   }
   ngOnInit(): void {
-    this.showSpinner(SpinnerType.BallAtom)
+    // this.showSpinner(SpinnerType.BallAtom)
   }
 
   m() {

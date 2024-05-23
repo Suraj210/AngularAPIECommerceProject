@@ -5,14 +5,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent extends BaseComponent {
-  constructor( spinner: NgxSpinnerService) {
-    super(spinner)
+  constructor(spinner: NgxSpinnerService) {
+    super(spinner);
   }
 
   ngOnInit(): void {
-    this.showSpinner(SpinnerType.BallAtom)
+    // this.showSpinner(SpinnerType.BallAtom)
   }
 }
