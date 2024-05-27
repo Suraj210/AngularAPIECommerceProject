@@ -1,4 +1,6 @@
-﻿using ECommerceAPI.Application.Exceptions;
+﻿using ECommerceAPI.Application.Abstractions.Services;
+using ECommerceAPI.Application.DTOs.User;
+using ECommerceAPI.Application.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,35 +9,30 @@ namespace ECommerceAPI.Application.Features.Commands.AppUser.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, CreateUserCommandResponse>
     {
-        readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
+        readonly IUserService _userService;
 
-        public CreateUserCommandHandler(UserManager<Domain.Entities.Identity.AppUser> userManager)
+        public CreateUserCommandHandler(IUserService userService)
         {
-            _userManager = userManager;
+            _userService = userService;
         }
-
 
         [HttpPost]
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
-         {
-            IdentityResult result = await _userManager.CreateAsync(new()
+        {
+            CreateUserResponse_DTO response = await _userService.CreateAsync(new()
             {
-                Id = Guid.NewGuid().ToString(),
-                UserName = request.Username,
                 Email = request.Email,
-                NameSurname = request.NameSurname
+                NameSurname = request.NameSurname,
+                Password = request.Password,
+                ConfirmPassword = request.ConfirmPassword,
+                Username = request.Username,
+            });
 
-            }, request.Password);
-
-            CreateUserCommandResponse response = new CreateUserCommandResponse() { Succeded = result.Succeeded };
-
-            if (result.Succeeded)
-                response.Message = "User created successfully.";
-            else
-                foreach (var error in result.Errors)
-                    response.Message += $"{error.Code}-{error.Description}\n";
-
-            return response;
+            return new()
+            {
+                Message = response.Message,
+                Succeded = response.Succeded,
+            };
         }
     }
 }

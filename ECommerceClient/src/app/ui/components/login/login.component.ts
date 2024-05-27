@@ -10,6 +10,7 @@ import {
   SocialUser,
 } from '@abacritt/angularx-social-login';
 import { HttpClientService } from '../../../services/common/http-client.service';
+import { UserAuthService } from '../../../services/common/models/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ import { HttpClientService } from '../../../services/common/http-client.service'
 })
 export class LoginComponent extends BaseComponent {
   constructor(
-    private userService: UserService,
+    private userAuthService: UserAuthService,
     spinner: NgxSpinnerService,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
@@ -32,14 +33,14 @@ export class LoginComponent extends BaseComponent {
       this.showSpinner(SpinnerType.BallAtom);
       switch (user.provider) {
         case 'GOOGLE':
-          await userService.googleLogin(user, () => {
+          await userAuthService.googleLogin(user, () => {
             this.authService.identityCheck();
             this.router.navigate(['']);
             this.hideSpinner(SpinnerType.BallAtom);
           });
           break;
         case 'FACEBOOK':
-          await userService.facebookLogin(user, () => {
+          await userAuthService.facebookLogin(user, () => {
             this.authService.identityCheck();
             this.router.navigate(['']);
             this.hideSpinner(SpinnerType.BallAtom);
@@ -51,7 +52,7 @@ export class LoginComponent extends BaseComponent {
 
   async login(userNameOrEmail: string, password: string) {
     this.showSpinner(SpinnerType.BallAtom);
-    await this.userService.login(userNameOrEmail, password, () => {
+    await this.userAuthService.login(userNameOrEmail, password, () => {
       this.authService.identityCheck();
       this.activatedRoute.queryParams.subscribe((params) => {
         const returnUrl: string = params['returnUrl'];
