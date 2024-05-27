@@ -89,4 +89,35 @@ export class UserService {
     }
     callBackFunction();
   }
+
+  async facebookLogin(
+    user: SocialUser,
+    callBackFunction: () => void
+  ): Promise<any> {
+    const observable: Observable<SocialUser | TokenResponse> =
+      this.httpClientService.post<SocialUser | TokenResponse>(
+        {
+          action: 'facebook-login',
+          controller: 'users',
+        },
+        user
+      );
+
+    const tokenResponse: TokenResponse = (await firstValueFrom(
+      observable
+    )) as TokenResponse;
+
+    if (tokenResponse) {
+      localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+      this.toastrService.message(
+        'Successfully logged in via Facebook',
+        'Logged in.',
+        {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopLeft,
+        }
+      );
+    }
+    callBackFunction();
+  }
 }

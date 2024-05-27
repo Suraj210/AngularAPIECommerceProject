@@ -15,10 +15,12 @@ namespace ECommerceAPI.Application.Features.Commands.AppUser.GoogleLogin
         readonly ITokenHandler _tokenHandler;
 
         public GoogleLoginCommandHandler(UserManager<Domain.Entities.Identity.AppUser> userManager,
-                                         IConfiguration configuration)
+                                         IConfiguration configuration,
+                                         ITokenHandler tokenHandler)
         {
             _userManager = userManager;
             _configuration = configuration;
+            _tokenHandler = tokenHandler;
         }
 
         public async Task<GoogleLoginCommandResponse> Handle(GoogleLoginCommandRequest request, CancellationToken cancellationToken)
@@ -26,7 +28,7 @@ namespace ECommerceAPI.Application.Features.Commands.AppUser.GoogleLogin
             ValidationSettings? settings = new GoogleJsonWebSignature.ValidationSettings()
             {
                 Audience = new List<string>()
-                { _configuration["ExternalLogin:Google-Client-Id"] }
+                { "1079771414722-e4elofclpef6ukibmahv8ng5tm98le9f.apps.googleusercontent.com" }
             };
 
             Payload payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken, settings);

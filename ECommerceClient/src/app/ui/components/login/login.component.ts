@@ -4,7 +4,11 @@ import { BaseComponent, SpinnerType } from '../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../../services/common/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import {
+  FacebookLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from '@abacritt/angularx-social-login';
 import { HttpClientService } from '../../../services/common/http-client.service';
 
 @Component({
@@ -23,11 +27,25 @@ export class LoginComponent extends BaseComponent {
   ) {
     super(spinner);
     this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
+      debugger;
+      console.log(user);
       this.showSpinner(SpinnerType.BallAtom);
-      await userService.googleLogin(user, () => {
-        this.authService.identityCheck();
-        this.hideSpinner(SpinnerType.BallAtom);
-      });
+      switch (user.provider) {
+        case 'GOOGLE':
+          await userService.googleLogin(user, () => {
+            this.authService.identityCheck();
+            this.router.navigate(['']);
+            this.hideSpinner(SpinnerType.BallAtom);
+          });
+          break;
+        case 'FACEBOOK':
+          await userService.facebookLogin(user, () => {
+            this.authService.identityCheck();
+            this.router.navigate(['']);
+            this.hideSpinner(SpinnerType.BallAtom);
+          });
+          break;
+      }
     });
   }
 
@@ -42,5 +60,9 @@ export class LoginComponent extends BaseComponent {
       });
       this.hideSpinner(SpinnerType.BallAtom);
     });
+  }
+
+  async facebookLogin() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 }

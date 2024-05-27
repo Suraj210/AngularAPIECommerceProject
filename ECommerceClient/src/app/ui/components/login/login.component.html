@@ -42,7 +42,21 @@
       <small class="form-text"> Please do not put password field empty! </small>
     </div>
 
-    <asl-google-signin-button></asl-google-signin-button>
+    <!-- <img
+      style="
+        display: inline-block;
+        width: 31px;
+        height: 31px;
+        margin-bottom: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+      "
+      (click)="facebookLogin()"
+      src="../../../../assets/facebook.png"
+    /> -->
+    <asl-google-signin-button
+      style="display: inline-block"
+    ></asl-google-signin-button>
 
     <button
       class="w-100 btn btn-lg"
