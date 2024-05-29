@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.Persistence", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A8302644-777F-43CB-B867-3003803BC05D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceAPI.API", "Presenatation\ECommerceAPI.API\ECommerceAPI.API.csproj", "{06709B2F-C5A9-42B5-BF36-F1F67FD161B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceAPI.API", "Presenatation\ECommerceAPI.API\ECommerceAPI.API.csproj", "{06709B2F-C5A9-42B5-BF36-F1F67FD161B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceAPI.SignalR", "Infrastructure\EcommerceAPI.SignalR\EcommerceAPI.SignalR.csproj", "{F8C86A0E-E975-4984-A6FA-BD93CFED1163}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{06709B2F-C5A9-42B5-BF36-F1F67FD161B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06709B2F-C5A9-42B5-BF36-F1F67FD161B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06709B2F-C5A9-42B5-BF36-F1F67FD161B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8C86A0E-E975-4984-A6FA-BD93CFED1163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8C86A0E-E975-4984-A6FA-BD93CFED1163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8C86A0E-E975-4984-A6FA-BD93CFED1163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8C86A0E-E975-4984-A6FA-BD93CFED1163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{22ACEDDE-9465-4522-ADF2-BD3C47E4C0F1} = {148ADA09-037A-45FB-8C1C-279C0D383024}
 		{0E64D3E7-1603-45A4-AD69-741D10E4F7FE} = {148ADA09-037A-45FB-8C1C-279C0D383024}
 		{06709B2F-C5A9-42B5-BF36-F1F67FD161B7} = {A8302644-777F-43CB-B867-3003803BC05D}
+		{F8C86A0E-E975-4984-A6FA-BD93CFED1163} = {148ADA09-037A-45FB-8C1C-279C0D383024}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {417D7697-271D-4F7F-B291-585E6B9A3A8F}

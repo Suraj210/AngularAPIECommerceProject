@@ -2107,6 +2107,22 @@
         "runtime": {
           "bin/placeholder/ECommerceAPI.Persistence.dll": {}
         }
+      },
+      "EcommerceAPI.SignalR/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ECommerceAPI.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EcommerceAPI.SignalR.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcommerceAPI.SignalR.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -4939,6 +4955,11 @@
       "type": "project",
       "path": "../../Infrastructure/ECommerceAPI.Persistence/ECommerceAPI.Persistence.csproj",
       "msbuildProject": "../../Infrastructure/ECommerceAPI.Persistence/ECommerceAPI.Persistence.csproj"
+    },
+    "EcommerceAPI.SignalR/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/EcommerceAPI.SignalR/EcommerceAPI.SignalR.csproj",
+      "msbuildProject": "../../Infrastructure/EcommerceAPI.SignalR/EcommerceAPI.SignalR.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4946,6 +4967,7 @@
       "ECommerceAPI.Application >= 1.0.0",
       "ECommerceAPI.Infrastructure >= 1.0.0",
       "ECommerceAPI.Persistence >= 1.0.0",
+      "EcommerceAPI.SignalR >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.28",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.28",
       "Serilog >= 3.1.1",
@@ -4996,6 +5018,9 @@
             },
             "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Infrastructure\\ECommerceAPI.Persistence\\ECommerceAPI.Persistence.csproj": {
               "projectPath": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Infrastructure\\ECommerceAPI.Persistence\\ECommerceAPI.Persistence.csproj"
+            },
+            "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Infrastructure\\EcommerceAPI.SignalR\\EcommerceAPI.SignalR.csproj": {
+              "projectPath": "C:\\Users\\acer\\Desktop\\ECommerceApplication\\ECommerceAPI\\Infrastructure\\EcommerceAPI.SignalR\\EcommerceAPI.SignalR.csproj"
             }
           }
         }

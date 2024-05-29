@@ -1,0 +1,17 @@
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.csproj.AssemblyReference.cache
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.AssemblyInfoInputs.cache
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.AssemblyInfo.cs
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.csproj.CoreCompileInputs.cache
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\EcommerceAPI.SignalR.deps.json
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\EcommerceAPI.SignalR.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\EcommerceAPI.SignalR.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\ECommerceAPI.Application.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\ECommerceAPI.Domain.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\ECommerceAPI.Application.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\bin\Debug\net6.0\ECommerceAPI.Domain.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.csproj.CopyComplete
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\refint\EcommerceAPI.SignalR.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\EcommerceAPI.SignalR.pdb
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Infrastructure\EcommerceAPI.SignalR\obj\Debug\net6.0\ref\EcommerceAPI.SignalR.dll

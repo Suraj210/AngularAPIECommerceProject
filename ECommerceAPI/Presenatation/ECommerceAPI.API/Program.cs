@@ -1,3 +1,4 @@
+using EcommerceAPI.SignalR;
 using ECommerceAPI.API.Configurations.ColumnWriters;
 using ECommerceAPI.API.Extension;
 using ECommerceAPI.Application;
@@ -25,16 +26,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddSignalRServices();
 
 // Add Storage Services
 //builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddStorage<AzureStorage>();
 
 
-
+//CORS Policy
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 
-policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod()
+policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
 
 ));
 
@@ -139,5 +141,6 @@ app.Use(async (context, next) =>
 
 
 app.MapControllers();
+app.MapHubs();
 
 app.Run();

@@ -104,3 +104,5 @@ C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceA
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Serilog.Sinks.PostgreSQL.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\Serilog.Sinks.Seq.dll
 C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\System.Threading.Channels.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\EcommerceAPI.SignalR.dll
+C:\Users\acer\Desktop\ECommerceApplication\ECommerceAPI\Presenatation\ECommerceAPI.API\bin\Debug\net6.0\EcommerceAPI.SignalR.pdb
