@@ -35,11 +35,35 @@ export class UserAuthService {
     const tokenResponse: TokenResponse = await firstValueFrom(observable);
     if (tokenResponse) {
       localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+      localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
 
       this.toastrService.message('User successfully logged in', 'Logged in.', {
         messageType: ToastrMessageType.Success,
         position: ToastrPosition.TopLeft,
       });
+    }
+    callBackFunction();
+  }
+
+  async refreshTokenLogin(
+    refreshToken: string,
+    callBackFunction?: () => void
+  ): Promise<any> {
+    const observable: Observable<any | TokenResponse> =
+      this.httpClientService.post(
+        {
+          action: 'refreshtokenlogin',
+          controller: 'auth',
+        },
+        { refreshToken: refreshToken }
+      );
+
+    const tokenResponse: TokenResponse = (await firstValueFrom(
+      observable
+    )) as TokenResponse;
+    if (tokenResponse) {
+      localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+      localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
     }
     callBackFunction();
   }
@@ -63,6 +87,8 @@ export class UserAuthService {
 
     if (tokenResponse) {
       localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+      localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
+
       this.toastrService.message(
         'Successfully logged in via Google',
         'Logged in.',
@@ -94,6 +120,8 @@ export class UserAuthService {
 
     if (tokenResponse) {
       localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+      localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
+
       this.toastrService.message(
         'Successfully logged in via Facebook',
         'Logged in.',
