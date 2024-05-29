@@ -1,4 +1,5 @@
 using ECommerceAPI.API.Configurations.ColumnWriters;
+using ECommerceAPI.API.Extension;
 using ECommerceAPI.Application;
 using ECommerceAPI.Application.Validators.Products;
 using ECommerceAPI.Infrastructure;
@@ -108,6 +109,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Middleware with extension class
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 
 app.UseStaticFiles();
 
