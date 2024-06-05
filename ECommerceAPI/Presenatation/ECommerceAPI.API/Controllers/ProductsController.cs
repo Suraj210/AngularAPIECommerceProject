@@ -1,6 +1,7 @@
 ﻿using ECommerceAPI.Application.Features.Commands.Product.CreateProduct;
 using ECommerceAPI.Application.Features.Commands.Product.DeleteProduct;
 using ECommerceAPI.Application.Features.Commands.Product.UpdateProduct;
+using ECommerceAPI.Application.Features.Commands.ProductImageFile.ChangeShowcaseImage;
 using ECommerceAPI.Application.Features.Commands.ProductImageFile.DeleteProductImage;
 using ECommerceAPI.Application.Features.Commands.ProductImageFile.UploadProductImage;
 using ECommerceAPI.Application.Features.Queries.Product.GetAllProduct;
@@ -23,6 +24,7 @@ namespace ECommerceAPI.API.Controllers
         {
             _mediator = mediator;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
@@ -82,7 +84,7 @@ namespace ECommerceAPI.API.Controllers
 
             uploadProductImageCommandRequest.Files = Request.Form.Files;
 
-           UploadProductImageCommandResponse response= await _mediator.Send(uploadProductImageCommandRequest);
+            UploadProductImageCommandResponse response = await _mediator.Send(uploadProductImageCommandRequest);
 
             return Ok();
         }
@@ -105,7 +107,7 @@ namespace ECommerceAPI.API.Controllers
 
         public async Task<IActionResult> DeleteProductImage([FromRoute] string id, [FromQuery] string imageId)
         {
-            DeleteProductImageCommandRequest deleteProductImageCommandRequest = new ()
+            DeleteProductImageCommandRequest deleteProductImageCommandRequest = new()
             {
                 Id = id,
                 ImageId = imageId
@@ -115,5 +117,13 @@ namespace ECommerceAPI.API.Controllers
             return Ok();
         }
 
+
+        [HttpGet("[action]")]
+        [Authorize(AuthenticationSchemes = "Admin")]
+        public async Task<IActionResult> ChangeShowcaseImage([FromQuery]ChangeShowcaseImageCommandRequest changeShowcaseImageCommandRequest)
+        {
+            ChangeShowcaseImageCommandResponse response = await _mediator.Send(changeShowcaseImageCommandRequest);
+            return Ok(response);
+        }
     }
 }

@@ -3,7 +3,14 @@
     <div class="col-3 my-3" *ngFor="let product of products">
       <div class="card" style="width: 18rem">
         <img
+          *ngIf="!product.productImageFiles.length"
           src="../../../../../assets/product-1.jpeg"
+          class="card-img-top"
+          alt="..."
+        />
+        <img
+          *ngIf="product.productImageFiles.length"
+          src="{{ baseUrl.url }}{{ product.imagePath }}"
           class="card-img-top"
           alt="..."
         />
@@ -24,7 +31,7 @@
 <nav aria-label="Page navigation example" class="d-flex justify-content-center">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link">Previous</a>
+      <p class="page-link">{{ currentPageNo }}/{{ totalPageCount }}</p>
     </li>
     <li class="page-item">
       <a
