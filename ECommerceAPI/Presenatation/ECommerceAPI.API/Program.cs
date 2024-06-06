@@ -22,7 +22,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
+builder.Services.AddHttpContextAccessor();//Service which  allows to acces HttpContext opject through classes in the layers (business logic) which has created by the cause of clients' requests.
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
