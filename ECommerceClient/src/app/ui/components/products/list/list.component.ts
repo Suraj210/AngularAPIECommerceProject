@@ -23,6 +23,7 @@ export class ListComponent implements OnInit {
   pageList: number[] = [];
   products: List_Product[];
   baseUrl: BaseUrl;
+
   async ngOnInit() {
     this.baseUrl = await this.fileService.getBaseStorageUrl();
 
@@ -48,7 +49,7 @@ export class ListComponent implements OnInit {
           stock: p.stock,
           productImageFiles: p.productImageFiles,
           imagePath: p.productImageFiles.length
-            ? p.productImageFiles.find((p) => p.showcase).path
+            ? p.productImageFiles.find((p) => p.showcase)?.path
             : '',
         };
         return listProduct;
