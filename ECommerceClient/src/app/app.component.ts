@@ -7,6 +7,7 @@ import {
   ToastrPosition,
 } from './services/ui/custom-toastr.service';
 import { Router } from '@angular/router';
+import { HttpClientService } from './services/common/http-client.service';
 declare var $: any;
 
 @Component({

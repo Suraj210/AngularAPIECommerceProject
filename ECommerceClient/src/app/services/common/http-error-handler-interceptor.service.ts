@@ -14,6 +14,9 @@ import {
   ToastrPosition,
 } from '../ui/custom-toastr.service';
 import { UserAuthService } from './models/user-auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from '../../base/base.component';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +24,9 @@ import { UserAuthService } from './models/user-auth.service';
 export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
   constructor(
     private toastrService: CustomToastrService,
-    private userAuthService: UserAuthService
+    private userAuthService: UserAuthService,
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   intercept(
@@ -32,18 +37,35 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
       catchError((error) => {
         switch (error.status) {
           case HttpStatusCode.Unauthorized:
-            this.toastrService.message(
-              'You do not have permition for this action.',
-              'Unathorized Action!',
-              {
-                messageType: ToastrMessageType.Warning,
-                position: ToastrPosition.TopLeft,
-              }
-            );
             this.userAuthService
-              .refreshTokenLogin(localStorage.getItem('refreshToken'))
+              .refreshTokenLogin(
+                localStorage.getItem('refreshToken'),
+                (state) => {
+                  if (!state) {
+                    const url = this.router.url;
+                    if (url == '/products') {
+                      this.toastrService.message(
+                        'You need to log in to add product.',
+                        'Log in',
+                        {
+                          messageType: ToastrMessageType.Warning,
+                          position: ToastrPosition.TopFullWidth,
+                        }
+                      );
+                    } else {
+                      this.toastrService.message(
+                        'You do not have permition for this action.',
+                        'Unathorized Action!',
+                        {
+                          messageType: ToastrMessageType.Warning,
+                          position: ToastrPosition.TopLeft,
+                        }
+                      );
+                    }
+                  }
+                }
+              )
               .then((data) => {});
-
             break;
           case HttpStatusCode.InternalServerError:
             this.toastrService.message(
@@ -87,6 +109,7 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
             );
             break;
         }
+        this.spinner.hide(SpinnerType.BallAtom);
         return of(error);
       })
     );
