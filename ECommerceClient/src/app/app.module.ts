@@ -50,6 +50,7 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
     provideAnimationsAsync(),
     provideToastr(),
     { provide: 'baseUrl', useValue: 'https://localhost:7188/api', multi: true },
+    { provide: 'baseSignalRUrl', useValue: 'https://localhost:7188/', multi: true },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
