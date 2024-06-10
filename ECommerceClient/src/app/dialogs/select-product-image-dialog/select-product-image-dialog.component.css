@@ -1,0 +1,14 @@
+.product-image-card {
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin: 15px;
+}
+.product-image-card img {
+  overflow: hidden;
+}
+
+.product-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}/*# sourceMappingURL=select-product-image-dialog.component.css.map */

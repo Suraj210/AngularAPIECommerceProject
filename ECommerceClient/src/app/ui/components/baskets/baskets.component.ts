@@ -12,6 +12,15 @@ import {
   ToastrPosition,
 } from '../../../services/ui/custom-toastr.service';
 import { Route, Router } from '@angular/router';
+import { DialogService } from '../../../services/common/dialog.service';
+import {
+  BasketItemDeleteState,
+  BasketItemRemoveDialogComponent,
+} from '../../../dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
+import {
+  CompleteShoppingState,
+  ShoppingCompleteDialogComponent,
+} from '../../../dialogs/shopping-complete-dialog/shopping-complete-dialog.component';
 declare var $: any;
 
 @Component({
@@ -25,7 +34,8 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     private basketService: BasketService,
     private orderService: OrderService,
     private toastrService: CustomToastrService,
-    private router: Router
+    private router: Router,
+    private dialogService: DialogService
   ) {
     super(spinner);
   }
@@ -49,25 +59,44 @@ export class BasketsComponent extends BaseComponent implements OnInit {
   }
 
   async removeBasketItem(basketItemId: string) {
-    this.showSpinner(SpinnerType.BallAtom);
+    $('#basketModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    this.dialogService.openDialog({
+      componentType: BasketItemRemoveDialogComponent,
+      data: BasketItemDeleteState.Yes,
+      afterClosed: async () => {
+        this.showSpinner(SpinnerType.BallAtom);
 
-    await this.basketService.remove(basketItemId);
-    $('.' + basketItemId).fadeOut(2000, () =>
-      this.hideSpinner(SpinnerType.BallAtom)
-    );
+        await this.basketService.remove(basketItemId);
+        $('.' + basketItemId).fadeOut(2000, () =>
+          this.hideSpinner(SpinnerType.BallAtom)
+        );
+        $('#basketModal').modal('show');
+      },
+    });
   }
 
   async shoppingCompleted() {
-    this.showSpinner(SpinnerType.BallAtom);
-    const order: Create_Order = new Create_Order();
-    order.address = ' Vasmoy';
-    order.description = 'Hebele hubele';
-    await this.orderService.create(order);
-    this.hideSpinner(SpinnerType.BallAtom);
-    this.toastrService.message('Order placed!', 'Order created', {
-      messageType: ToastrMessageType.Info,
-      position: ToastrPosition.TopRight,
+    $('#basketModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    this.dialogService.openDialog({
+      componentType: ShoppingCompleteDialogComponent,
+      data: CompleteShoppingState.Yes,
+      afterClosed: async () => {
+        this.showSpinner(SpinnerType.BallAtom);
+        const order: Create_Order = new Create_Order();
+        order.address = ' Vasmoy';
+        order.description = 'Hebele hubele';
+        await this.orderService.create(order);
+        this.hideSpinner(SpinnerType.BallAtom);
+        this.toastrService.message('Order placed!', 'Order created', {
+          messageType: ToastrMessageType.Info,
+          position: ToastrPosition.TopRight,
+        });
+        this.router.navigate(['/']);
+      },
     });
-    this.router.navigate(['/']);
   }
 }

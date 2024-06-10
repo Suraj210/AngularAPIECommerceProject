@@ -1,0 +1,14 @@
+.admin-container {
+  width: 99%;
+  height: 100vh;
+  margin: 10px;
+  border: 1px solid #555;
+  background-color: beige;
+  color: black;
+}
+
+.admin-left {
+  background-color: rgb(84, 84, 84);
+  color: black;
+  width: 15%;
+}/*# sourceMappingURL=layout.component.css.map */
