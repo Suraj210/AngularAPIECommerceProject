@@ -21,13 +21,17 @@
     <!-- Created Date Column -->
     <ng-container matColumnDef="createdDate">
       <th mat-header-cell *matHeaderCellDef>Created Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.createdDate }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.createdDate | date }}
+      </td>
     </ng-container>
 
     <!-- Updated Date Column -->
     <ng-container matColumnDef="updatedDate">
       <th mat-header-cell *matHeaderCellDef>Updated Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.updatedDate }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.updatedDate | date }}
+      </td>
     </ng-container>
 
     <!--  Photos -->
