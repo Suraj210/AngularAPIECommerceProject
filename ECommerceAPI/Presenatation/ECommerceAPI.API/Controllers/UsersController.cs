@@ -1,4 +1,5 @@
-﻿using ECommerceAPI.Application.Features.Commands.AppUser.CreateUser;
+﻿using ECommerceAPI.Application.Abstractions.Services;
+using ECommerceAPI.Application.Features.Commands.AppUser.CreateUser;
 using ECommerceAPI.Application.Features.Commands.AppUser.FacebookLogin;
 using ECommerceAPI.Application.Features.Commands.AppUser.GoogleLogin;
 using ECommerceAPI.Application.Features.Commands.AppUser.LoginUser;
@@ -26,10 +27,11 @@ namespace ECommerceAPI.API.Controllers
             {
                 return BadRequest(ModelState);
             }
-            CreateUserCommandResponse response =await _mediator.Send(createUserCommandRequest);
+            CreateUserCommandResponse response = await _mediator.Send(createUserCommandRequest);
             return Ok(response);
         }
 
-       
+      
+
     }
 }
