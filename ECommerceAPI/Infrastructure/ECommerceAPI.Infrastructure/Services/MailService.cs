@@ -19,13 +19,13 @@ namespace ECommerceAPI.Infrastructure.Services
             _configuration = configuration;
         }
 
-        public async Task SendMessageAsync(string to, string subject, string body, bool isBodyHtml = true)
+        public async Task SendMailAsync(string to, string subject, string body, bool isBodyHtml = true)
         {
-            await SendMessageAsync(new[] { to }, subject, body, isBodyHtml);
+            await SendMailAsync(new[] { to }, subject, body, isBodyHtml);
 
         }
 
-        public async Task SendMessageAsync(string[] tos, string subject, string body, bool isBodyHtml = true)
+        public async Task SendMailAsync(string[] tos, string subject, string body, bool isBodyHtml = true)
         {
             MailMessage mail = new();
             mail.IsBodyHtml = isBodyHtml;
@@ -44,6 +44,24 @@ namespace ECommerceAPI.Infrastructure.Services
             smtp.EnableSsl = true;
             smtp.Host = _configuration["Mail:Host"];
             await smtp.SendMailAsync(mail);
+        }
+
+        public async Task SendPasswordResetMailAsync(string to, string userId, string resetToken)
+        {
+            StringBuilder mail = new();
+            mail.Append("Hello<br>If you want to reste your password you can do it through link:<strong> <a target=\"_blank\" href=\"");
+            mail.Append(_configuration["AngularClientUrl"]);
+            mail.Append("/update-password/");
+            mail.Append(userId);
+            mail.Append("/");
+            mail.Append(resetToken);
+            mail.Append("\">");
+            //var data = mail.ToString().Length;
+            var restLink = mail.ToString().IndexOf("href=") + 6;
+            string hyperLink = mail.ToString().Substring(restLink, mail.ToString().Length-restLink-8);
+            mail.Append(hyperLink);
+            mail.Append("</a></strong><br><br><span style=\"font-size:12px;\">If you do not know about this request please skip this mail.</span><br><br><br>SI-Mini|E-commerce");
+            await SendMailAsync(to, "Reset Password", mail.ToString());
         }
     }
 }

@@ -117,9 +117,12 @@
   .customForm {
     padding: 15px;
 
-    .btn {
+    .btnn {
       @include glassmorphism;
       color: #fff;
+      outline: none;
+      border: none;
+      padding: 0.7rem 0;
 
       &:hover,
       &:focus {

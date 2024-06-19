@@ -59,12 +59,15 @@
     ></asl-google-signin-button>
 
     <button
-      class="w-100 btn btn-lg"
+      class="w-100 btnn btn-lg"
       type="submit"
       (click)="login(txtUsernameOrEmail.value, txtPassword.value)"
     >
       Login
     </button>
+    <a class="w-100 btn btn-lg btn-danger mt-2" routerLink="/password-reset">
+      Forgot Password?
+    </a>
   </div>
 
   <p class="copyright">&copy; 2024</p>
