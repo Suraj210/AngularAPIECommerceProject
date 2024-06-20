@@ -3,6 +3,23 @@ import { BaseDialog } from '../base/base-dialog';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OrderService } from '../../services/common/models/order.service';
 import { Single_Order } from '../../contracts/order/single_order';
+import { DialogService } from '../../services/common/dialog.service';
+import {
+  CompleteOrderDialogComponent,
+  CompleteOrderState,
+} from '../complete-order-dialog/complete-order-dialog.component';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from '../../base/base.component';
+import {
+  CustomToastrService,
+  ToastrMessageType,
+  ToastrPosition,
+} from '../../services/ui/custom-toastr.service';
+import {
+  AlertifyService,
+  MessageType,
+  Position,
+} from '../../services/admin/alertify.service';
 
 @Component({
   selector: 'app-order-detail-dialog',
@@ -16,7 +33,10 @@ export class OrderDetailDialogComponent
   constructor(
     dialogRef: MatDialogRef<OrderDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderDetailDialogState | string,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private dialogService: DialogService,
+    private spinner: NgxSpinnerService,
+    private toastrService: CustomToastrService
   ) {
     super(dialogRef);
   }
@@ -37,6 +57,26 @@ export class OrderDetailDialogComponent
     this.totalPrice = this.singleOrder.basketItems
       .map((basketItem, index) => basketItem.price * basketItem.quantity)
       .reduce((price, cur) => price + cur);
+  }
+
+  completeOrder() {
+    this.dialogService.openDialog({
+      componentType: CompleteOrderDialogComponent,
+      data: CompleteOrderState.Yes,
+      afterClosed: async () => {
+        this.spinner.show(SpinnerType.BallAtom);
+        await this.orderService.completeOrder(this.data as string);
+        this.spinner.hide(SpinnerType.BallAtom);
+        this.toastrService.message(
+          'Order has been completed successfully!',
+          'Success',
+          {
+            messageType: ToastrMessageType.Success,
+            position: ToastrPosition.TopRight,
+          }
+        );
+      },
+    });
   }
 }
 export enum OrderDetailDialogState {

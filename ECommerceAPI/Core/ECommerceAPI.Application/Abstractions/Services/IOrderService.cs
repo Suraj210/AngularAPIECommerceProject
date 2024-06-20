@@ -1,9 +1,4 @@
 ﻿using ECommerceAPI.Application.DTOs.Order;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerceAPI.Application.Abstractions.Services
 {
@@ -12,5 +7,6 @@ namespace ECommerceAPI.Application.Abstractions.Services
         Task CreateOrderAsync(CreateOrder_DTO createOrder_DTO);
         Task<ListOrder_DTO> GetAllOrdersAsync(int page, int size);
         Task<SingleOrder_DTO> GetOrderByIdAsync(string id);
+        Task CompleteOrderAsync(string id);
     }
 }

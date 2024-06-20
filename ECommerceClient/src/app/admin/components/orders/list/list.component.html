@@ -28,6 +28,18 @@
       </td>
     </ng-container>
 
+    <!--  Completed -->
+    <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <img
+          *ngIf="element.completed"
+          style="width: 70%; cursor: pointer"
+          src="../../../../../assets/completed2.png"
+        />
+      </td>
+    </ng-container>
+
     <!--  View Detail -->
     <ng-container matColumnDef="viewdetail">
       <th mat-header-cell *matHeaderCellDef></th>

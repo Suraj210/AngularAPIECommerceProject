@@ -8,5 +8,6 @@
         public string OrderCode { get; set; }
         public DateTime CreatedTime { get; set; }
         public object BasketItems { get; set; }
+        public bool Completed { get; set; }
     }
 }

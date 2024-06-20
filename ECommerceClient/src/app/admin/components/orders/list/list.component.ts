@@ -37,6 +37,7 @@ export class ListComponent extends BaseComponent {
     'userName',
     'totalPrice',
     'createdDate',
+    "completed",
     'viewdetail',
     'delete',
   ];
