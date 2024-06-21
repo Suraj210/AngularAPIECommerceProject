@@ -1,12 +1,8 @@
 ﻿using ECommerceAPI.Application.Abstractions.Services;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerceAPI.Infrastructure.Services
 {
@@ -17,6 +13,15 @@ namespace ECommerceAPI.Infrastructure.Services
         public MailService(IConfiguration configuration)
         {
             _configuration = configuration;
+        }
+
+        public async Task SendCompletedOrderMailAsync(string to, string orderCode, DateTime orderDate,  string userSurname)
+        {
+            string mail = $"Hello Dear  {userSurname}, <br>" +
+                $"{orderCode} order at {orderDate} date has been completed and sent to the third party cargo company.<br>" +
+                $"Best regards!";
+
+            await SendMailAsync(to, $"{orderCode}-Order Completed", mail);
         }
 
         public async Task SendMailAsync(string to, string subject, string body, bool isBodyHtml = true)
@@ -58,7 +63,7 @@ namespace ECommerceAPI.Infrastructure.Services
             mail.Append("\">");
             //var data = mail.ToString().Length;
             var restLink = mail.ToString().IndexOf("href=") + 6;
-            string hyperLink = mail.ToString().Substring(restLink, mail.ToString().Length-restLink-8);
+            string hyperLink = mail.ToString().Substring(restLink, mail.ToString().Length - restLink - 8);
             mail.Append(hyperLink);
             mail.Append("</a></strong><br><br><span style=\"font-size:12px;\">If you do not know about this request please skip this mail.</span><br><br><br>SI-Mini|E-commerce");
             await SendMailAsync(to, "Reset Password", mail.ToString());
